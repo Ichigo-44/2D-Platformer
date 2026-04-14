@@ -13,6 +13,8 @@ public class HealthComponent : MonoBehaviour
     public delegate void HealthChangedHandler(int oldHealth, int amountChanged);
     public event HealthChangedHandler OnHealthChanged;
 
+    public delegate void HealthInitHandler
+    public event HealthInitHandler
     private void Start()
     {
         currentHealth = maxHealth;
@@ -22,8 +24,10 @@ public class HealthComponent : MonoBehaviour
     {
         if (canReciveDamage)
         {
+            OnHealthChanged?.Invoke(currentHealth, amount);
             canReciveDamage = false;
             StartCoroutine(RunInvincibilityTimer(invincibilityTime, RefreshInvincibility));
+            currentHealth -= amount;
         }
     }
 
