@@ -13,8 +13,8 @@ public class HealthComponent : MonoBehaviour
     public delegate void HealthChangedHandler(int oldHealth, int amountChanged);
     public event HealthChangedHandler OnHealthChanged;
 
-    public delegate void HealthInitHandler
-    public event HealthInitHandler
+    public delegate void HealthInitialisedHandler(float newHealth);
+    public event HealthInitialisedHandler OnHealthInitialised;
     private void Start()
     {
         currentHealth = maxHealth;
