@@ -5,11 +5,10 @@ using UnityEngine;
 public class HealthComponent : MonoBehaviour
 {
     public int maxHealth = 100;
-    public float invincibilityTime = 2f;
+    private int Health;
     private bool canReciveDamage = true;
+    public float invincibilityTime = 2f;
 
-    private int currentHealth;
-    
     public delegate void HealthChangedHandler(int oldHealth, int amountChanged);
     public event HealthChangedHandler OnHealthChanged;
 
@@ -19,7 +18,7 @@ public class HealthComponent : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
-    
+
     public void ReceiveDamage(int amount, Vector3 origin)
     {
         if (canReciveDamage)
@@ -41,5 +40,11 @@ public class HealthComponent : MonoBehaviour
     {
         canReciveDamage = true;
         Debug.Log("Reset");
+    }
+
+    public void AddHealth(float healthToAdd)
+    {
+        health += healthToAdd;
+        OnHealthChanged?.Invoke(health, healthToAdd);
     }
 }
