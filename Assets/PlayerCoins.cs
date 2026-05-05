@@ -10,9 +10,7 @@ public class PlayerCoins : MonoBehaviour
     public delegate void CoinInitialisedHandler(float newCoin);
     public event CoinInitialisedHandler OncoincInitialised;
 
-    public void AddCoins(float coin)
-    { }
- 
+
     void Start()
     {
         
@@ -23,7 +21,8 @@ public class PlayerCoins : MonoBehaviour
     {
         
     }
-    public void Addcoins(float coinToAdd)
+
+    public void AddCoin(float coinToAdd)
     {
         coin += coinToAdd;
         OncoinChanged?.Invoke(coin, coinToAdd);

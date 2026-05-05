@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class cuin : MonoBehaviour
+public class Coin : MonoBehaviour
 {
     public float coin = 1;
     void Start()
@@ -18,7 +18,7 @@ public class cuin : MonoBehaviour
     {
         Destroy(gameObject);
         Debug.Log(collision);
-        collision.GetComponent<PlayerCoins>().AddCoins(coin);
+        collision.GetComponent<PlayerCoins>().AddCoin(coin);
     }
 }
 
