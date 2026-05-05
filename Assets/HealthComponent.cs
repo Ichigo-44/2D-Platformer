@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
-    public int maxHealth = 100;
-    private int Health;
+    public float maxHealth = 100;
+    private float currentHealth;
     private bool canReciveDamage = true;
     public float invincibilityTime = 2f;
 
-    public delegate void HealthChangedHandler(int oldHealth, int amountChanged);
+    public delegate void HealthChangedHandler(float oldHealth, float amountChanged);
     public event HealthChangedHandler OnHealthChanged;
 
     public delegate void HealthInitialisedHandler(float newHealth);
@@ -19,7 +19,7 @@ public class HealthComponent : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void ReceiveDamage(int amount, Vector3 origin)
+    public void ReceiveDamage(float amount, Vector3 origin)
     {
         if (canReciveDamage)
         {
@@ -44,7 +44,7 @@ public class HealthComponent : MonoBehaviour
 
     public void AddHealth(float healthToAdd)
     {
-        health += healthToAdd;
-        OnHealthChanged?.Invoke(health, healthToAdd);
+        currentHealth += healthToAdd;
+        OnHealthChanged?.Invoke(currentHealth, healthToAdd);
     }
 }
