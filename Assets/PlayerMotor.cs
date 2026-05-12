@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerMotor : MonoBehaviour
 {
     Vector2 direction;
+    public float dashForce = 10;
     public float acceleration = 10;
     public float stoppingForce = 10;
     public float maxSpeedX = 10;
@@ -75,6 +76,10 @@ public class PlayerMotor : MonoBehaviour
         }
     }
 
+    private void OnDash()
+    {
+        _rigidbody2D.AddForce(new Vector2(direction.x * dashForce,0), ForceMode2D.Impulse);
+    }
     void OnCollisionEnter2D(Collision2D collision)
     {
         _canJump = true;
@@ -84,4 +89,7 @@ public class PlayerMotor : MonoBehaviour
     {
         _rigidbody2D.AddForce(new Vector3(origin.x - transform.position.x,0,0) * enemyHitForce, ForceMode2D.Impulse);
     }
+
+
+
 }
