@@ -2780,7 +2780,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.7204, y: 0, z: -10}
+  m_LocalPosition: {x: -0.03, y: 0, z: -10}
   m_LocalScale: {x: 0.5359375, y: 0.5971875, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8967,6 +8967,7 @@ GameObject:
   - component: {fileID: 1048695806}
   - component: {fileID: 1048695808}
   - component: {fileID: 1048695809}
+  - component: {fileID: 1048695810}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -9068,7 +9069,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.09092474, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9087,9 +9088,9 @@ Transform:
   m_GameObject: {fileID: 1048695801}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2458, y: -0.2458, z: 0}
-  m_LocalScale: {x: 0.5084, y: 0.5084, z: 0.5084}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.16838, y: -0.2458, z: -0.41541}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 0.18644366}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 519420032}
   m_Father: {fileID: 0}
@@ -9138,7 +9139,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.27, y: 0.33}
   m_EdgeRadius: 0
 --- !u!50 &1048695807
 Rigidbody2D:
@@ -9194,6 +9195,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: 0
+--- !u!95 &1048695810
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048695801}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ef0327c6291472e438d9b0778b8bb9e2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1050397102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14172,10 +14195,10 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 619394802}
-  - {fileID: 1048695805}
   - {fileID: 4175923097159242904}
   - {fileID: 8182287112163004880}
+  - {fileID: 619394802}
+  - {fileID: 1048695805}
   - {fileID: 1945350345}
   - {fileID: 1663175405}
   - {fileID: 1080882391}

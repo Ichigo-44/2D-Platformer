@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,17 +14,38 @@ public class PlayerMotor : MonoBehaviour
     public float jumpForce = 5;
     public float enemyHitForce = 50;
     private Rigidbody2D _rigidbody2D;
+    private Animator _animator; 
     private bool _canJump = true;
+
+    private float initXScale;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        initXScale = transform.localScale.x;
     }
     // Update is called once per frame
     private void FixedUpdate()
     {
         MovePlayer();
         LimitMaxSpeed();
+        if (direction.x != 0)
+        {
+            _animator.SetBool("is moving", true);
+        }
+        else
+        {
+            _animator.SetBool("is moving", false);
+        }
+        if (direction.x > 0)
+        {
+            transform.localScale = new Vector3(initXScale, transform.localScale.y, transform.localScale.z);
+        }
+        else if(direction.x < 0)
+        {
+            transform.localScale = new Vector3(-initXScale, transform.localScale.y, transform.localScale.z);
+        }
     }
 
     private void LimitMaxSpeed()
