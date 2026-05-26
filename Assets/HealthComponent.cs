@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthComponent : MonoBehaviour
 {
@@ -17,16 +18,25 @@ public class HealthComponent : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+        OnHealthInitialised?.Invoke(currentHealth);
     }
-
+   
     public void ReceiveDamage(float amount, Vector3 origin)
     {
         if (canReciveDamage)
         {
+            currentHealth -= amount;
             OnHealthChanged?.Invoke(currentHealth, amount);
             canReciveDamage = false;
             StartCoroutine(RunInvincibilityTimer(invincibilityTime, RefreshInvincibility));
-            currentHealth -= amount;
+            
+        }
+
+        {
+            if(currentHealth <= 0)
+            {
+                SceneManager.LoadScene("RIP");
+            }
         }
     }
 
@@ -39,8 +49,9 @@ public class HealthComponent : MonoBehaviour
     private void RefreshInvincibility()
     {
         canReciveDamage = true;
-        Debug.Log("Reset");
+
     }
+    
 
     public void AddHealth(float healthToAdd)
     {

@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerMotor : MonoBehaviour
 {
     Vector2 direction;
+    private bool canJump = true;
+    public int multijump = 1;
     public float dashForce = 10;
     public float acceleration = 10;
     public float stoppingForce = 10;
@@ -47,7 +49,23 @@ public class PlayerMotor : MonoBehaviour
             transform.localScale = new Vector3(-initXScale, transform.localScale.y, transform.localScale.z);
         }
     }
+    private void OnJump()
+    {
+        Debug.Log("Jump");
+        if (canJump)
+         {
+            _rigidbody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            if (multijump > 0)
+            {
+                multijump--;
+            }
+            else
+            {
+                _canJump = false;
 
+            }
+        }
+    }
     private void LimitMaxSpeed()
     {
         //Limit max speed
@@ -89,7 +107,7 @@ public class PlayerMotor : MonoBehaviour
         direction = value.Get<Vector2>();
     }
 
-    private void OnJump()
+    private void Canjump()
     {
         if (_canJump)
         {
